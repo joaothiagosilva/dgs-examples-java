@@ -1,0 +1,12 @@
+rest-client:
+  retry:
+    sleep-period: 100
+    max-sleep-period: 1000
+    max-retry-attempts: 5
+  api:
+    reviews:
+      url: http://localhost:8085
+      api-key: "test"
+    shows:
+      url: http://localhost:8085
+      api-key: "test"

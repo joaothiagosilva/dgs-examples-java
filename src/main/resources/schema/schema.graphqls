@@ -1,0 +1,24 @@
+type Query {
+    shows(titleFilter: String): [Show]
+}
+
+type Show {
+    id: Int
+    title: String
+    releaseYear: Int
+    reviews(minScore:Int): [Review]
+    artwork: [Image]
+}
+
+type Review {
+    username: String
+    starScore: Int
+    submittedDate: DateTime
+}
+
+type Image {
+    url: String
+}
+
+scalar DateTime
+directive @skipcodegen on FIELD_DEFINITION

@@ -1,0 +1,51 @@
+plugins {
+	id("java")
+	id("org.springframework.boot") version "2.4.0"
+	id("io.spring.dependency-management") version "1.0.11.RELEASE"
+	id("com.netflix.dgs.codegen") version "4.4.1"
+}
+
+group = "com.example"
+version = "0.0.1-SNAPSHOT"
+java.sourceCompatibility = JavaVersion.VERSION_1_8
+
+repositories {
+	mavenCentral()
+	maven {
+        url "https://netflixoss.jfrog.io/artifactory/maven-oss-candidates/"
+    }
+	mavenLocal()
+}
+
+dependencies {
+    compileOnly('org.projectlombok:lombok:1.18.20')
+    annotationProcessor("org.projectlombok:lombok:1.18.20")
+
+	implementation("com.netflix.graphql.dgs:graphql-dgs-spring-boot-starter:latest.release")
+    implementation("org.springframework.cloud:spring-cloud-starter-openfeign:latest.release")
+    implementation("com.netflix.feign:feign-jackson:8.18.0")
+    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.9.4")
+    runtimeOnly("com.fasterxml.jackson.module:jackson-modules-java8:2.12.2")
+
+    implementation("com.graphql-java:graphql-java-extended-scalars:1.0")
+	implementation("com.github.javafaker:javafaker:1.+")
+
+    implementation("org.springframework.boot:spring-boot-starter-web")
+	testImplementation("org.springframework.boot:spring-boot-starter-test")
+}
+
+generateJava{
+    schemaPaths = ["${projectDir}/src/main/resources/schema"] // List of directories containing schema files
+    packageName = 'com.example.demo.generated' // The package name to use to generate sources
+    generateClient = true // Enable generating the type safe query API
+}
+
+java {
+    targetCompatibility = JavaVersion.VERSION_1_8
+    sourceCompatibility = JavaVersion.VERSION_1_8
+}
+
+test {
+    useJUnitPlatform()
+}
+

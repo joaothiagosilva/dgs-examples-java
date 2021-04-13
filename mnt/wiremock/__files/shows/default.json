@@ -1,0 +1,27 @@
+[
+   {
+     "id": 1,
+     "title": "Stranger Things",
+     "releaseYear": 2016
+   },
+   {
+     "id": 2,
+     "title": "Ozark",
+     "releaseYear": 2017
+   },
+   {
+     "id": 3,
+     "title": "The Crown",
+     "releaseYear": 2016
+   },
+   {
+     "id": 4,
+     "title": "Dead to Me",
+     "releaseYear": 2019
+   },
+   {
+     "id": 5,
+     "title": "Orange is the New Black",
+     "releaseYear": 2013
+   }
+]

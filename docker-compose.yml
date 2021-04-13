@@ -1,0 +1,17 @@
+version: '3.7'
+
+services:
+  wiremock:
+    image: "holomekc/wiremock-gui:latest"
+    container_name: mock-api
+    ports:
+      - 8085:8085
+      - 8443:8443
+    volumes:
+      - ./mnt/wiremock:/home/wiremock/storage
+    environment:
+      WIREMOCK_OPTIONS: "--print-all-network-traffic,--verbose,--port=8085,--https-port=8443,--max-request-journal=1000,--local-response-templating,--root-dir=/home/wiremock/storage"
+    networks:
+      default:
+        aliases:
+          - mock-api.docker.gap.com
